@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Everything I Need To Know About JavaScript</title>
+<style>
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #f4f8fb;
+    margin: 0;
+    padding: 0 1rem 3rem;
+    color: #222;
+    line-height: 1.6;
+  }
+  header {
+    padding: 2rem 0 1rem;
+    text-align: center;
+    background: #313d5a;
+    color: #eaeaea;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: 0.05em;
+  }
+  nav {
+    background: #262f44;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  nav h2 {
+    color: #a0c4ff;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    columns: 2;
+    column-gap: 2rem;
+  }
+  nav ul li {
+    margin-bottom: 0.5rem;
+  }
+  nav ul li a {
+    color: #d0e2ff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  nav ul li a:hover,
+  nav ul li a:focus {
+    text-decoration: underline;
+  }
+  main {
+    max-width: 900px;
+    background: #fff;
+    margin: 0 auto 4rem;
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgb(32 44 64 / 0.1);
+  }
+  section {
+    margin-bottom: 3rem;
+  }
+  section h2 {
+    border-bottom: 3px solid #ff6f91;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: #ff6f91;
+  }
+  code, pre {
+    background: #1e1e2f;
+    color: #c9d1d9;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 0.95rem;
+    border-radius: 6px;
+  }
+  pre {
+    padding: 1rem;
+    overflow-x: auto;
+    max-width: 100%;
+    margin: 1rem 0;
+  }
+  code {
+    padding: 0.1rem 0.3rem;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  ul, ol {
+    padding-left: 1.5rem;
+    margin-top: 0;
+  }
+  a {
+    color: #ff6f91;
+  }
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+  footer {
+    text-align: center;
+    color: #777;
+  }
+  @media (max-width: 600px) {
+    nav ul {
+      columns: 1;
+      padding-left: 1rem;
+    }
+    main {
+      padding: 1rem 1.5rem;
+    }
+  }
+  /* Highlight keywords in code blocks */
+  .keyword { color: #ff7b72; font-weight: 700; }
+  .string { color: #ffa7c4; }
+  .number { color: #c6f1ff; }
+  .comment { color: #6a737d; font-style: italic; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Everything I Need to Know About JavaScript</h1>
+</header>
+
+<nav aria-label="Table of contents">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#variables">Variables</a></li>
+    <li><a href="#data-types">Data Types</a></li>
+    <li><a href="#functions">Functions</a></li>
+    <li><a href="#control-flow">Control Flow</a></li>
+    <li><a href="#objects">Objects</a></li>
+    <li><a href="#arrays">Arrays</a></li>
+    <li><a href="#es6-features">ES6+ Features</a></li>
+    <li><a href="#dom-manipulation">DOM Manipulation</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#async-js">Asynchronous JavaScript</a></li>
+    <li><a href="#promises">Promises</a></li>
+    <li><a href="#async-await">Async/Await</a></li>
+    <li><a href="#best-practices">Best Practices</a></li>
+    <li><a href="#resources">Further Resources</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="introduction">
+    <h2>Introduction</h2>
+    <p>
+      JavaScript is a versatile, high-level programming language widely used for web development. It enables you to create interactive and dynamic web pages. JavaScript runs in browsers and also on servers via environments like Node.js.
+    </p>
+  </section>
+
+  <section id="variables">
+    <h2>Variables</h2>
+    <p>Variables store data values. In modern JavaScript, use <code>let</code> and <code>const</code> for variable declarations. Avoid <code>var</code> due to its confusing scoping rules.</p>
+    <pre><code><span class="keyword">let</span> count = <span class="number">10</span>;
+<span class="keyword">const</span> name = <span class="string">'Alice'</span>;</code></pre>
+    <ul>
+      <li><code>let</code>: variable with block scope, can be reassigned.</li>
+      <li><code>const</code>: constant with block scope, cannot be reassigned after initialization.</li>
+    </ul>
+  </section>
+
+  <section id="data-types">
+    <h2>Data Types</h2>
+    <p>JavaScript has several data types:</p>
+    <ul>
+      <li><strong>Primitive</strong>: string, number, boolean, null, undefined, symbol, bigint</li>
+      <li><strong>Object</strong>: arrays, functions, objects</li>
+    </ul>
+    <pre><code>// Examples:
+<span class="keyword">let</span> str = <span class="string">'Hello'</span>;
+<span class="keyword">let</span> num = <span class="number">42</span>;
+<span class="keyword">let</span> bool = <span class="keyword">true</span>;
+<span class="keyword">let</span> nothing = <span class="keyword">null</span>;
+<span class="keyword">let</span> undef;
+<span class="keyword">let</span> obj = { name: <span class="string">'Bob'</span>, age: <span class="number">25</span> };</code></pre>
+  </section>
+
+  <section id="functions">
+    <h2>Functions</h2>
+    <p>Functions are reusable blocks of code. There are multiple ways to define functions:</p>
+    <pre><code>// Function declaration
+<span class="keyword">function</span> greet(name) {
+  <span class="keyword">return</span> <span class="string">'Hello, '</span> + name + <span class="string"> '!' </span>;
+}
+
+// Function expression
+<span class="keyword">const</span> greet2 = <span class="keyword">function</span>(name) {
+  <span class="keyword">return</span> <span class="string">'Hi, '</span> + name + <span class="string"> '!' </span>;
+};
+
+// Arrow function (ES6+)
+<span class="keyword">const</span> greet3 = (name) => <span class="string">'Hey, ' + name + '!' </span>;</code></pre>
+  </section>
+
+  <section id="control-flow">
+    <h2>Control Flow</h2>
+    <p>JavaScript supports control flow constructs to control execution:</p>
+    <pre><code>// Conditional
+<span class="keyword">if</span> (count &gt; <span class="number">5</span>) {
+  console.log(<span class="string">'More than 5'</span>);
+} <span class="keyword">else</span> {
+  console.log(<span class="string">'5 or less'</span>);
+}
+
+// Loop
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; count; i++) {
+  console.log(i);
+}</code></pre>
+  </section>
+
+  <section id="objects">
+    <h2>Objects</h2>
+    <p>Objects store key-value pairs. They are fundamental in JavaScript for data representation and more.</p>
+    <pre><code><span class="keyword">const</span> user = {
+  name: <span class="string">'Charlie'</span>,
+  age: <span class="number">30</span>,
+  greet() {
+    console.log(<span class="string">'Hi, I am ' </span> + this.name);
+  }
+};
+user.greet(); <span class="comment">// Hi, I am Charlie</span></code></pre>
+  </section>
+
+  <section id="arrays">
+    <h2>Arrays</h2>
+    <p>Arrays store ordered lists of values, and have many useful built-in methods.</p>
+    <pre><code><span class="keyword">const</span> fruits = [<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'cherry'</span>];
+fruits.push(<span class="string">'date'</span>);
+console.log(fruits.length); <span class="comment">// 4</span></code></pre>
+  </section>
+
+  <section id="es6-features">
+    <h2>ES6+ Features</h2>
+    <p>Modern JavaScript (ES6 and later) added many features:</p>
+    <ul>
+      <li><strong>Template literals:</strong> Use backticks for multi-line strings and interpolation: <code>\`Hello, ${name}!\`</code></li>
+      <li><strong>Destructuring:</strong> Extract values from arrays or objects easily.</li>
+      <li><strong>Spread/rest operators:</strong> Expand or gather elements.</li>
+      <li><strong>Modules:</strong> Import/export code between files.</li>
+      <li><strong>Default parameters, classes, promises, async/await, let/const, arrow functions</strong></li>
+    </ul>
+    <pre><code>// Template literal
+<span class="keyword">let</span> message = <span class="string">\`Hello, \${name}!\`</span>;
+
+// Destructuring
+<span class="keyword">const</span> [first, second] = [<span class="string">'apple'</span>, <span class="string">'banana'</span>];
+<span class="keyword">const</span> {age, name: userName} = user;</code></pre>
+  </section>
+
+  <section id="dom-manipulation">
+    <h2>DOM Manipulation</h2>
+    <p>JavaScript can manipulate the Document Object Model (DOM) to change webpage content dynamically.</p>
+    <pre><code>// Select element by id
+<span class="keyword">const</span> heading = document.getElementById(<span class="string">'heading'</span>);
+heading.textContent = <span class="string">'Hello World!'</span>;
+
+// Create new element
+<span class="keyword">const</span> para = document.createElement(<span class="string">'p'</span>);
+para.textContent = <span class="string">'This is a new paragraph.'</span>;
+document.body.appendChild(para);</code></pre>
+  </section>
+
+  <section id="events">
+    <h2>Events</h2>
+    <p>JavaScript responds to user actions or browser events using event listeners.</p>
+    <pre><code><span class="keyword">const</span> button = document.querySelector(<span class="string">'button'</span>);
+button.addEventListener(<span class="string">'click'</span>, () =&gt; {
+  alert(<span class="string">'Button clicked!'</span>);
+});</code></pre>
+  </section>
+
+  <section id="async-js">
+    <h2>Asynchronous JavaScript</h2>
+    <p>JavaScript runs asynchronously using callbacks, promises, and async/await, allowing the program to continue running while waiting for tasks like network requests.</p>
+    <pre><code>// Asynchronous callback example
+<span class="keyword">setTimeout</span>(() =&gt; {
+  console.log(<span class="string">'Executed after 1 second'</span>);
+}, <span class="number">1000</span>);</code></pre>
+  </section>
+
+  <section id="promises">
+    <h2>Promises</h2>
+    <p>Promises represent future completion (or failure) of asynchronous operations.</p>
+    <pre><code><span class="keyword">const</span> myPromise = <span class="keyword">new</span> Promise((resolve, reject) =&gt; {
+  <span class="keyword">setTimeout</span>(() =&gt; resolve(<span class="string">'Done'</span>), <span class="number">1000</span>);
+});
+
+myPromise
+  .then(result =&gt; console.log(result))  <span class="comment">// Logs 'Done'</span>
+  .catch(err =&gt; console.error(err));</code></pre>
+  </section>
+
+  <section id="async-await">
+    <h2>Async/Await</h2>
+    <p>Async/await syntax makes working with promises easier by writing asynchronous code that looks synchronous.</p>
+    <pre><code><span class="keyword">async</span> <span class="keyword">function</span> fetchData() {
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(<span class="string">'https://api.example.com/data'</span>);
+    <span class="keyword">const</span> data = <span class="keyword">await</span> response.json();
+    console.log(data);
+  } <span class="keyword">catch</span> (error) {
+    console.error(error);
+  }
+}
+fetchData();</code></pre>
+  </section>
+
+  <section id="best-practices">
+    <h2>Best Practices</h2>
+    <ul>
+      <li>Use <code>const</code> by default, <code>let</code> if reassigning is needed.</li>
+      <li>Prefer arrow functions for anonymous functions for cleaner code.</li>
+      <li>Use strict equality <code>===</code> instead of <code>==</code> for comparisons.</li>
+      <li>Always declare variables before use to avoid hoisting issues.</li>
+      <li>Keep functions small and focused.</li>
+      <li>Write descriptive names for variables and functions.</li>
+      <li>Make use of modern ES6+ features for cleaner and more maintainable code.</li>
+      <li>Handle errors properly, especially in asynchronous code.</li>
+      <li>Use comments judiciously to explain non-obvious code.</li>
+      <li>Test your code thoroughly.</li>
+    </ul>
+  </section>
+
+  <section id="resources">
+    <h2>Further Resources</h2>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">MDN JavaScript Documentation</a></li>
+      <li><a href="https://javascript.info/" target="_blank" rel="noopener">JavaScript Info</a></li>
+      <li><a href="https://eloquentjavascript.net/" target="_blank" rel="noopener">Eloquent JavaScript (Book)</a></li>
+      <li><a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" target="_blank" rel="noopener">freeCodeCamp JavaScript Curriculum</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+</footer>
+</body>
+</html>
+
